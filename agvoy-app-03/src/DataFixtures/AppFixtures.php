@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Region;
 use App\Entity\Room;
+use App\Entity\Owner;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -37,7 +38,7 @@ class AppFixtures extends Fixture
         // On peut plutôt faire une référence explicite à la référence
         // enregistrée précédamment, ce qui permet d'éviter de se
         // tromper d'instance de Region :
-        //$room->addRegion($this->getReference(self::IDF_REGION_REFERENCE));
+        $room->addRegion($this->getReference(self::IDF_REGION_REFERENCE));
         $manager->persist($room);
 
         $manager->flush();

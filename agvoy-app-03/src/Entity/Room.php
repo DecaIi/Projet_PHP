@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,14 +39,30 @@ class Room
     private $superficy;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $price;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $address;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Region", inversedBy="rooms")
+     */
+    private $region;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Owner", inversedBy="room")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $owner;
+
+    public function __construct()
+    {
+        $this->region = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -119,6 +137,44 @@ class Room
     public function setAddress(string $address): self
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Region[]
+     */
+    public function getRegion(): Collection
+    {
+        return $this->region;
+    }
+
+    public function addRegion(Region $region): self
+    {
+        if (!$this->region->contains($region)) {
+            $this->region[] = $region;
+        }
+
+        return $this;
+    }
+
+    public function removeRegion(Region $region): self
+    {
+        if ($this->region->contains($region)) {
+            $this->region->removeElement($region);
+        }
+
+        return $this;
+    }
+
+    public function getOwner(): ?Owner
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?Owner $owner): self
+    {
+        $this->owner = $owner;
 
         return $this;
     }
