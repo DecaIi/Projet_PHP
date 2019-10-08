@@ -8,13 +8,20 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>List of Regions</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/ahmed/proj-agvoy/Projet_PHP/agvoy-app-03/src/Controller/CouetteEtCafeController.php'|file_link(0) }}">src/Controller/CouetteEtCafeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/ahmed/proj-agvoy/Projet_PHP/agvoy-app-03/templates/couette_et_cafe/index.html.twig'|file_link(0) }}">templates/couette_et_cafe/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <table class="table">
+        <tbody>
+        {% for region in regions %}
+            <tr>
+                <td><a href="{{ path('region_id', {'id': region.id}) }}">{{ region.name }}</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}
