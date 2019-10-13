@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Region;
+use App\Entity\Room;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -39,15 +40,15 @@ class CouetteEtCafeController extends AbstractController
     /**
      * Finds and displays a region.
      *
-     * @Route("/{id}", name="region_id", methods="GET")
-     * @param $id
+     * @Route("/{id}", name="region_id", requirements={ "id": "\d+"},methods="GET")
+     * @param Region $region
      * @return Response
      */
-    public function showAction($id): Response
+    public function showAction(Region $region): Response
     {
-        $em = $this->getDoctrine()->getManager();
+        //$em = $this->getDoctrine()->getManager();
 
-        $region = $em->getRepository(Region::class)->findOneBy(['id' => $id]);
+        //$region = $em->getRepository(Region::class)->findOneBy(['id' => $id]);
         $rooms = $region->getRooms();
         return $this->render('couette_et_cafe/show.html.twig', array(
             'rooms' => $rooms,

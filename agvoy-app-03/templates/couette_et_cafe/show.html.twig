@@ -1,18 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Region{% endblock %}
+{% block title %}Rooms{% endblock %}
 
-{% block main %}
-    <h1>Region</h1>
+{% block body %}
+    <h1>Rooms</h1>
 
-    <table class="table">
+   <table class="table">
         <tbody>
-        {% foreach room in rooms %}
+        {% for room in rooms %}
             <tr>
-                <td><h1>{{ room.name }}</h1></td>
+                <th>Summary</th>
+                <td>{{ room.summary }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
                 <td>{{  room.description }}</td>
             </tr>
+            <tr>
+                <th>Capacity</th>
+                <td>{{ room.capacity }}</td>
+            </tr>
+            <tr>
+                <th>Superficy</th>
+                <td>{{ room.superficy }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ room.price }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ room.address }}</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
+
+    <a href="{{ path('region_list') }}">Back to list of regions</a>
 
 {% endblock %}
