@@ -26,7 +26,7 @@ class CouetteEtCafeController extends AbstractController
      */
     public function RegionList(){
         $em = $this->getDoctrine()->getManager();
-
+        $likes = $this->get('session')->get('likes');
         $regions = $em->getRepository(Region::class)->findAll();
 
         dump($regions);
