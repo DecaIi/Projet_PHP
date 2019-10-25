@@ -17,6 +17,7 @@ class RoomController extends AbstractController
 {
     /**
      * @Route("/admin/index", name="room_index", methods={"GET"})
+     * @Route("/client/index", name="client_room_index", methods={"GET"})
      */
     public function index(RoomRepository $roomRepository): Response
     {
@@ -91,5 +92,29 @@ class RoomController extends AbstractController
 
         return $this->redirectToRoute('room_index');
     }
+    /**
+     * @Route("/client/{id}", name="client_room_show", methods={"GET"})
+     */
+    public function client_show(Room $room): Response
+    {
+        return $this->render('couette_et_cafe/Client/region/_delete_form.html.twig', [
+            'room' => $room,
+        ]);
+    }
+    /*
+    /**
+     * @Route("/client/index", name="client_room_index", methods={"GET"})
+
+    public function client_index(RoomRepository $roomRepository): Response
+    {
+        return $this->render('couette_et_cafe/Client/room/index.html.twig', [
+            'rooms' => $roomRepository->findAll(),
+        ]);
+    }
+    */
+
+
+
+
 
 }

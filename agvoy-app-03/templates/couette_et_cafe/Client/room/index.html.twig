@@ -31,8 +31,7 @@
                 <td>{{ room.address }}</td>
                 {%  if() %} }}
                 <td>
-                    <a href="{{ path('room_show', {'id': room.id}) }}">show</a>
-                    <a href="{{ path('room_edit', {'id': room.id}) }}">edit</a>
+                    <a href="{{ path('client_room_show', {'id': room.id}) }}">show</a>
                 </td>
             </tr>
         {% else %}
@@ -43,5 +42,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('room_new') }}">Create new</a>
 {% endblock %}
