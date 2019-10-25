@@ -9,24 +9,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 /**
  * @Route("/region")
  */
 class RegionController extends AbstractController
 {
     /**
-     * @Route("/", name="region_index", methods={"GET"})
+     * @Route("/admin/index", name="region_index", methods={"GET"})
      */
     public function index(RegionRepository $regionRepository): Response
     {
-        return $this->render('region/index.html.twig', [
+        return $this->render('couette_et_cafe/admin/region/index.html.twig', [
             'regions' => $regionRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="region_new", methods={"GET","POST"})
+     * @Route("/admin/new", name="region_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -42,24 +41,24 @@ class RegionController extends AbstractController
             return $this->redirectToRoute('region_index');
         }
 
-        return $this->render('region/new.html.twig', [
+        return $this->render('couette_et_cafe/admin/region/new.html.twig', [
             'region' => $region,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="region_show", methods={"GET"})
+     * @Route("/admin/{id}", name="region_show", methods={"GET"})
      */
     public function show(Region $region): Response
     {
-        return $this->render('region/show.html.twig', [
+        return $this->render('couette_et_cafe/admin/region/show.html.twig', [
             'region' => $region,
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="region_edit", methods={"GET","POST"})
+     * @Route("/admin/{id}/edit", name="region_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Region $region): Response
     {
@@ -72,14 +71,14 @@ class RegionController extends AbstractController
             return $this->redirectToRoute('region_index');
         }
 
-        return $this->render('region/edit.html.twig', [
+        return $this->render('couette_et_cafe/admin/region/edit.html.twig', [
             'region' => $region,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="region_delete", methods={"DELETE"})
+     * @Route("admin/{id}/", name="region_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Region $region): Response
     {
@@ -91,4 +90,29 @@ class RegionController extends AbstractController
 
         return $this->redirectToRoute('region_index');
     }
+
+    /**
+     * @Route("/client/index/", name="client_region_index", methods={"GET"})
+     */
+    public function client_index(RegionRepository $regionRepository): Response
+    {
+        return $this->render('couette_et_cafe/Client/region/index.html.twig', [
+            'regions' => $regionRepository->findAll(),
+        ]);
+    }
+    /**
+     * @Route("/client/{id}", name="client_region_show", methods={"GET"})
+     */
+    public function client_show(Region $region): Response
+    {
+        return $this->render('couette_et_cafe/Client/region/show.html.twig', [
+            'region' => $region,
+        ]);
+    }
+
+
+
+
+
+
 }
