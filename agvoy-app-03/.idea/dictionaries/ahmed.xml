@@ -2,6 +2,7 @@
   <dictionary name="ahmed">
     <words>
       <w>couette</w>
+      <w>csrf</w>
       <w>firstname</w>
     </words>
   </dictionary>
