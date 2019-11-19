@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Room;
 use App\Form\RoomType;
 use App\Repository\RoomRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,8 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RoomController extends AbstractController
 {
     /**
-     * @Route("/admin/index", name="room_index", methods={"GET"})
-     * @Route("/client/index", name="client_room_index", methods={"GET"})
+     * @Route("/", name="room_index", methods={"GET"})
      */
     public function index(RoomRepository $roomRepository): Response
     {
@@ -27,7 +27,8 @@ class RoomController extends AbstractController
     }
 
     /**
-     * @Route("/admin/new", name="room_new", methods={"GET","POST"})
+     * @Route("/new", name="room_new", methods={"GET","POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function new(Request $request): Response
     {
@@ -50,7 +51,7 @@ class RoomController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}", name="room_show", methods={"GET"})
+     * @Route("/{id}", name="room_show", methods={"GET"})
      */
     public function show(Room $room): Response
     {
@@ -60,7 +61,8 @@ class RoomController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}/edit", name="room_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="room_edit", methods={"GET","POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function edit(Request $request, Room $room): Response
     {
@@ -80,7 +82,8 @@ class RoomController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}/delete", name="room_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="room_delete", methods={"DELETE"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function delete(Request $request, Room $room): Response
     {
@@ -92,29 +95,4 @@ class RoomController extends AbstractController
 
         return $this->redirectToRoute('room_index');
     }
-    /**
-     * @Route("/client/{id}", name="client_room_show", methods={"GET"})
-     */
-    public function client_show(Room $room): Response
-    {
-        return $this->render('couette_et_cafe/Client/region/_delete_form.html.twig', [
-            'room' => $room,
-        ]);
-    }
-    /*
-    /**
-     * @Route("/client/index", name="client_room_index", methods={"GET"})
-
-    public function client_index(RoomRepository $roomRepository): Response
-    {
-        return $this->render('couette_et_cafe/Client/room/index.html.twig', [
-            'rooms' => $roomRepository->findAll(),
-        ]);
-    }
-    */
-
-
-
-
-
 }

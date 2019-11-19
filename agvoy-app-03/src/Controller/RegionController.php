@@ -5,12 +5,13 @@ namespace App\Controller;
 use App\Entity\Region;
 use App\Form\RegionType;
 use App\Repository\RegionRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 /**
- * @Route("/admin/region")
+ * @Route("/region")
  */
 class RegionController extends AbstractController
 {
@@ -26,6 +27,7 @@ class RegionController extends AbstractController
 
     /**
      * @Route("/new", name="region_new", methods={"GET","POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function new(Request $request): Response
     {
@@ -59,6 +61,7 @@ class RegionController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="region_edit", methods={"GET","POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function edit(Request $request, Region $region): Response
     {
@@ -79,6 +82,7 @@ class RegionController extends AbstractController
 
     /**
      * @Route("{id}/", name="region_delete", methods={"DELETE"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function delete(Request $request, Region $region): Response
     {
@@ -90,29 +94,4 @@ class RegionController extends AbstractController
 
         return $this->redirectToRoute('region_index');
     }
-
-    /**
-     * @Route("/client/index/", name="client_region_index", methods={"GET"})
-     */
-    public function client_index(RegionRepository $regionRepository): Response
-    {
-        return $this->render('couette_et_cafe/Client/region/index.html.twig', [
-            'regions' => $regionRepository->findAll(),
-        ]);
-    }
-    /**
-     * @Route("/client/{id}", name="client_region_show", methods={"GET"})
-     */
-    public function client_show(Region $region): Response
-    {
-        return $this->render('couette_et_cafe/Client/region/show.html.twig', [
-            'region' => $region,
-        ]);
-    }
-
-
-
-
-
-
 }
