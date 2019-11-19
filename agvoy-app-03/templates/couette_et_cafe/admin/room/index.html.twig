@@ -32,7 +32,9 @@
 
                 <td>
                     <a href="{{ path('room_show', {'id': room.id}) }}">show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('room_edit', {'id': room.id}) }}">edit</a>
+                    {%  endif %}
                 </td>
             </tr>
         {% else %}
@@ -42,6 +44,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path('room_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
