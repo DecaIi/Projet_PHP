@@ -4,38 +4,6 @@
 
 {% block main %}
     <h1>Rooms</h1>
-    {#
-   <table class="table">
-        <tbody>
-        {% for room in rooms %}
-            <tr>
-                <th>Summary</th>
-                <td>{{ room.summary }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{  room.description }}</td>
-            </tr>
-            <tr>
-                <th>Capacity</th>
-                <td>{{ room.capacity }}</td>
-            </tr>
-            <tr>
-                <th>Superficy</th>
-                <td>{{ room.superficy }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ room.price }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ room.address }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    #}
     {% for room in rooms %}
     <div class="form-horizontal"><!-- <form>  -->
 

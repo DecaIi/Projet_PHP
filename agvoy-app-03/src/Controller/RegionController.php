@@ -10,12 +10,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 /**
- * @Route("/region")
+ * @Route("/admin/region")
  */
 class RegionController extends AbstractController
 {
     /**
-     * @Route("/admin/index", name="region_index", methods={"GET"})
+     * @Route("/", name="region_index", methods={"GET"})
      */
     public function index(RegionRepository $regionRepository): Response
     {
@@ -25,7 +25,7 @@ class RegionController extends AbstractController
     }
 
     /**
-     * @Route("/admin/new", name="region_new", methods={"GET","POST"})
+     * @Route("/new", name="region_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -48,7 +48,7 @@ class RegionController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}", name="region_show", methods={"GET"})
+     * @Route("/{id}", name="region_show", methods={"GET"})
      */
     public function show(Region $region): Response
     {
@@ -58,7 +58,7 @@ class RegionController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}/edit", name="region_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="region_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Region $region): Response
     {
@@ -78,7 +78,7 @@ class RegionController extends AbstractController
     }
 
     /**
-     * @Route("admin/{id}/", name="region_delete", methods={"DELETE"})
+     * @Route("{id}/", name="region_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Region $region): Response
     {
