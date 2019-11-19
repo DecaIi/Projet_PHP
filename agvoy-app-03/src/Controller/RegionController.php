@@ -20,7 +20,7 @@ class RegionController extends AbstractController
      */
     public function index(RegionRepository $regionRepository): Response
     {
-        return $this->render('couette_et_cafe/admin/region/index.html.twig', [
+        return $this->render('couette_et_cafe/user/region/index.html.twig', [
             'regions' => $regionRepository->findAll(),
         ]);
     }
@@ -43,7 +43,7 @@ class RegionController extends AbstractController
             return $this->redirectToRoute('region_index');
         }
 
-        return $this->render('couette_et_cafe/admin/region/new.html.twig', [
+        return $this->render('couette_et_cafe/user/region/new.html.twig', [
             'region' => $region,
             'form' => $form->createView(),
         ]);
@@ -54,7 +54,7 @@ class RegionController extends AbstractController
      */
     public function show(Region $region): Response
     {
-        return $this->render('couette_et_cafe/admin/region/show.html.twig', [
+        return $this->render('couette_et_cafe/user/region/show.html.twig', [
             'region' => $region,
         ]);
     }
@@ -74,7 +74,7 @@ class RegionController extends AbstractController
             return $this->redirectToRoute('region_index');
         }
 
-        return $this->render('couette_et_cafe/admin/region/edit.html.twig', [
+        return $this->render('couette_et_cafe/user/region/edit.html.twig', [
             'region' => $region,
             'form' => $form->createView(),
         ]);

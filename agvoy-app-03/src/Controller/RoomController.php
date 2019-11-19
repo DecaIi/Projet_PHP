@@ -21,7 +21,7 @@ class RoomController extends AbstractController
      */
     public function index(RoomRepository $roomRepository): Response
     {
-        return $this->render('couette_et_cafe/admin/room/index.html.twig', [
+        return $this->render('couette_et_cafe/user/room/index.html.twig', [
             'rooms' => $roomRepository->findAll(),
         ]);
     }
@@ -44,7 +44,7 @@ class RoomController extends AbstractController
             return $this->redirectToRoute('room_index');
         }
 
-        return $this->render('couette_et_cafe/admin/room/new.html.twig', [
+        return $this->render('couette_et_cafe/user/room/new.html.twig', [
             'room' => $room,
             'form' => $form->createView(),
         ]);
@@ -55,7 +55,7 @@ class RoomController extends AbstractController
      */
     public function show(Room $room): Response
     {
-        return $this->render('couette_et_cafe/admin/room/show.html.twig', [
+        return $this->render('couette_et_cafe/user/room/show.html.twig', [
             'room' => $room,
         ]);
     }
@@ -75,7 +75,7 @@ class RoomController extends AbstractController
             return $this->redirectToRoute('room_index');
         }
 
-        return $this->render('couette_et_cafe/admin/room/edit.html.twig', [
+        return $this->render('couette_et_cafe/user/room/edit.html.twig', [
             'room' => $room,
             'form' => $form->createView(),
         ]);

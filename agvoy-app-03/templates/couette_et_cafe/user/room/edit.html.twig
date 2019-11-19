@@ -6,9 +6,9 @@
 {% block main %}
     <h1>Edit Room</h1>
 
-    {{ include('couette_et_cafe/admin/room/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('couette_et_cafe/user/room/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('room_index') }}">back to list</a>
 
-    {{ include('couette_et_cafe/admin/room/_form.html.twig') }}
+    {{ include('couette_et_cafe/user/room/_form.html.twig') }}
 {% endblock %}
