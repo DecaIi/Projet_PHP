@@ -4,7 +4,7 @@ bootstrap_menu:
       items:
         regions:
           label: 'Regions'
-          route: 'region_list'
+          route: 'region_index'
 
     anonymousaccount:
       items:

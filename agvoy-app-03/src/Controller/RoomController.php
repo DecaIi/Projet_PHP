@@ -60,6 +60,7 @@ class RoomController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/{id}/edit", name="room_edit", methods={"GET","POST"})
      * @Security("has_role('ROLE_ADMIN')")

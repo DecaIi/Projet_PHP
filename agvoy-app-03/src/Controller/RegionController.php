@@ -50,12 +50,22 @@ class RegionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="region_show", methods={"GET"})
-     */
+ * @Route("/{id}", name="region_show", methods={"GET"})
+ */
     public function show(Region $region): Response
     {
         return $this->render('couette_et_cafe/user/region/show.html.twig', [
             'region' => $region,
+        ]);
+    }
+    /**
+     * @Route("/{id}/roomslist", name="region_show_list", methods={"GET"})
+     */
+    public function show_list(Region $region): Response
+    {
+        $rooms = $region ->getRooms() ;
+        return $this->render('couette_et_cafe/user/room/index.html.twig', [
+            'rooms' => $rooms,
         ]);
     }
 
