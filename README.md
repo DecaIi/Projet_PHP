@@ -4,7 +4,7 @@ CSC4101
 
 Les différentes routes et accès:
 
-home : /                                  
+home :              /                                  
 region_index : /region/                           
 region_new : /region/new                        
 region_show : /region/{id}                       
