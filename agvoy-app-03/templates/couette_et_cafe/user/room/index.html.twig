@@ -29,7 +29,6 @@
                 <td>{{ room.superficy }}</td>
                 <td>{{ room.price }}</td>
                 <td>{{ room.address }}</td>
-
                 <td>
                     <a href="{{ path('room_show', {'id': room.id}) }}">show</a>
                     {% if is_granted('ROLE_ADMIN') %}

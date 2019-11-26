@@ -37,6 +37,13 @@ class RoomController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imagefile = $room->getImageFile();
+            if($imagefile) {
+                $mimetype = $imagefile->getMimeType();
+
+                $room->setContentType($mimetype);
+
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($room);
             $entityManager->flush();
