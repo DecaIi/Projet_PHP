@@ -4,18 +4,20 @@ CSC4101
 
 Les différentes routes et accès:
 
-home :              /                                  
-region_index : /region/                           
-region_new : /region/new                        
-region_show : /region/{id}                       
-region_show_list : /region/{id}/roomslist             
-region_edit : /region/{id}/edit                  
-region_delete : /region{id}/                       
-app_register : /register                          
-room_index : /room/                             
-room_new : /room/new                          
-room_show : /room/{id}                         
-room_edit : /room/{id}/edit                    
-room_delete : /room/{id}/delete                  
-app_login : /login                             
-app_logout : /logout
+| NAME | PATH | ACCESS |
+| --- | --- | --- |
+home | / | Anyone                                 
+region_index | /region/ | Anyone                           
+region_new | /region/new | Admin                       
+region_show | /region/{id} | Anyone                      
+region_show_list | /region/{id}/roomslist | Anyone            
+region_edit | /region/{id}/edit | Admin
+region_delete | /region{id}/ | Admin            
+app_register | /register | Anyone             
+room_index | /room/ | Anyone               
+room_new | /room/new | Admin                  
+room_show | /room/{id} | Anyone                   
+room_edit | /room/{id}/edit | Admin                
+room_delete | /room/{id}/delete | Admin              
+app_login | /login | Anyone                
+app_logout | /logout | Anyone
